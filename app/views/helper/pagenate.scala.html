@@ -1,0 +1,21 @@
+@(page: Integer, maxPage: Integer)
+
+<ul class="pager pager-margin">
+    @page match {
+        case i if i <= 1 => {
+            <li class="previous disabled"><a href="#">&larr; 前へ</a></li>
+        }
+        case _ => {
+            <li class="previous"><a href="@routes.Checks.recent(page - 1)">&larr; 前へ</a></li>
+        }
+    }
+
+    @page match {
+        case i if i >= maxPage => {
+            <li class="next disabled"><a href="#">次へ &rarr; </a></li>
+        }
+        case _ => {
+            <li class="next"><a href="@routes.Checks.recent(page + 1)">次へ &rarr; </a></li>
+        }
+    }
+</ul>

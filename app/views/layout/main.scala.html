@@ -1,0 +1,32 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title | Checkyou</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+    </head>
+    <body>
+        @* メニューを表示 *@
+        @tag.menu()
+
+        @* ロゴ出力 *@
+        @tag.logo()
+
+        <div class="container">
+            @* ページ内コンテンツ出力 *@
+            @tag.flashMessage()
+            <div class="content">
+            @content
+            </div>
+        </div>
+        @* フッター出力 *@
+        @tag.footer()
+
+    </body>
+</html>

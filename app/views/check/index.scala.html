@@ -1,0 +1,31 @@
+@import models.request.Check.ResultPostRequest
+@(title: String, message: String, bindForm: Form[ResultPostRequest])
+
+@import layout._
+@import helper._
+
+
+
+@* TODO これがよくわからない *@
+@implicitField = @{
+    FieldConstructor(inputForm.f)
+}
+
+
+    @main(title){
+    <h2 class="copy-align">@message</h2>
+    <p id="description" class="description">Twitterのユーザー名を入れて下さい</p>
+
+    @form(action = CSRF(controllers.routes.Checks.result()),'id -> "checkForm"){
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 check-form">
+                <div class="input-group">
+                    @inputText(bindForm("name"),'class -> "form-control")
+                    <span class="input-group-btn">
+                        <input type="submit" id="checkYourName" class="btn btn-default" value="Submit" />
+                    </span>
+                </div> @*input-group*@
+            </div> @*check-form*@
+        </div> @*row*@
+    }
+}

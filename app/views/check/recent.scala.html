@@ -1,0 +1,27 @@
+@(title: String, mesasge: String, entryList: java.util.List[models.entity.Check], page: Integer, maxPage: Integer)
+
+@import layout._
+@import helper._
+
+@main(title) {
+    <h2>@title</h2>
+
+    <p>@mesasge</p>
+    <table class="table table-striped">
+        <tr>
+            <th class="table-column-first">お名前</th>
+            <th class="table-column-second">診断結果</th>
+            <th class="table-column-third">Twitterシェア用ページ</th>
+            <th class="table-column-fourth">登録日時</th>
+        </tr>
+        @for(entry <- entryList) {
+            <tr>
+                <td>@entry.getName</td>
+                <td>@entry.getResult</td>
+                <td><a href="@routes.Checks.resultId(entry.getId).absoluteURL()">シェアページ</a></td>
+                <td>@helper.defaultDate(entry.getCreated)</td>
+            </tr>
+        }
+    </table>
+    @helper.pagenate(page,maxPage)
+}

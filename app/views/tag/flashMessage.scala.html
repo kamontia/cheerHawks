@@ -1,0 +1,15 @@
+@()
+
+@if(flash.containsKey("success")) {
+    <p class="success alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>@flash.get("success")</strong>
+    </p>
+}
+
+@if(flash.containsKey("error")) {
+    <p class="error alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>@flash.get("error")</strong>
+    </p>
+}
