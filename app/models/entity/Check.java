@@ -2,15 +2,12 @@ package models.entity;
 
 import models.services.Check.CheckModelService;
 import models.services.Check.CheckService;
-import play.db.ebean.Model;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
+import play.db.ebean.Model;
 import play.libs.F;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +16,7 @@ import java.util.List;
 @Table(name = "checks")
 public class Check extends Model {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Constraints.Required
