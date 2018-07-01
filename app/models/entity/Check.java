@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "checks")
 public class Check extends Model {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Constraints.Required
