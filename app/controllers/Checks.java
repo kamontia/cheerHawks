@@ -29,7 +29,7 @@ public class Checks extends Apps {
      *
      * @return
      */
-    public static Result result() {
+    public static Result results() {
         Form<ResultPostRequest> form = form(ResultPostRequest.class).bindFromRequest();
         if (form.error("name") != null && form.error("name").message().contains("error.required")) {
             return validationErrorIndexResult("名前欄が空欄です", form);

@@ -16,7 +16,7 @@
     <h2 class="copy-align">@message</h2>
     <p id="description" class="description">Twitterのユーザー名を入れて下さい</p>
 
-    @form(action = CSRF(controllers.routes.Checks.result()),'id -> "checkForm"){
+    @form(action = CSRF(controllers.routes.Checks.results()),'id -> "checkForm"){
         <div class="row">
             <div class="col-md-4 col-md-offset-4 check-form">
                 <div class="input-group">

@@ -4,13 +4,19 @@
 
 
 # Home page
-GET        /                          controllers.Checks.index()
-POST       /result                    controllers.Checks.result()
-GET        /recent                    controllers.Checks.recent(page: Integer = 1)
-GET        /recent/:page              controllers.Checks.recent(page: Integer)
-GET        /result                    controllers.Checks.resultId(id: Long = 1L)
-GET        /result/:id                controllers.Checks.resultId(id: Long)
+GET         /                           controllers.Checks.index()
+POST        /results                     controllers.Checks.results()
+GET         /recent                     controllers.Checks.recent(page: Integer = 1)
+GET         /recent/:page               controllers.Checks.recent(page: Integer)
+GET         /results                     controllers.Checks.resultId(id: Long = 1L)
+GET         /results/:id                 controllers.Checks.resultId(id: Long)
+
+# API
+GET         /v1/check/:id.json          controllers.api.Checks.check(id:Long)
+GET         /v1/checks/:page.json        controllers.api.Checks.getList(page:Integer)
+
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file         controllers.Assets.at(path="/public", file)
-GET         /webjars/*file        controllers.WebJarAssets.at(file)
+GET         /assets/*file               controllers.Assets.at(path="/public", file)
+GET         /webjars/*file              controllers.WebJarAssets.at(file)

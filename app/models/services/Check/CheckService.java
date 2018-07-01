@@ -35,7 +35,7 @@ public class CheckService {
     public F.Option<String> getResultText(String name, String version) {
         StringBuilder result = new StringBuilder();
         result.append(name);
-        result.append(ConfigUtil.get("checkYou.setting.message.result").getOrElse("-"));
+        result.append(ConfigUtil.get("checkYou.setting.message.results").getOrElse("-"));
         result.append(version);
         result.append(ConfigUtil.get("checkYou.setting.message.resultSuffix").getOrElse("."));
         return OptionUtil.apply(result.toString());
