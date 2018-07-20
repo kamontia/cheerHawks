@@ -4,12 +4,13 @@ import play.libs.F;
 import utils.ConfigUtil;
 import utils.OptionUtil;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import java.util.*;
 
 public class CheckService {
+
+    private final static int TRANSLATION_LENGTH = 3;
 
     /**
      * 結果取得
@@ -21,8 +22,17 @@ public class CheckService {
         List<String> versions = ConfigUtil.getByList("checkYou.setting.answer").getOrElse(new ArrayList<String>() {{
             add("2.1.3 Java");
         }});
-        Collections.shuffle(versions);
-        return getResultText(name, versions.get(0));
+
+        /* 引数nameに基づくユニークな値を取得する */
+        String uniqueNum = calculateUniqueNumber(name);
+        /* 乱数の生成 シード値付き */
+        Random rnd = new Random(Integer.parseInt(uniqueNum, 16));
+
+        int rndValue = rnd.nextInt(versions.size());
+        System.out.println(versions.size());
+        System.out.println(rndValue);
+
+        return getResultText(name, versions.get(rndValue));
     }
 
     /**
@@ -39,5 +49,32 @@ public class CheckService {
         result.append(version);
         result.append(ConfigUtil.get("checkYou.setting.message.resultSuffix").getOrElse("."));
         return OptionUtil.apply(result.toString());
+    }
+
+
+    /**
+     * TwitterIDからハッシュ値を導出
+     * @param name
+     * @return Digest
+     */
+    public String calculateUniqueNumber(String name) {
+        byte[] tmpValue;
+        StringBuilder sb = null;
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-1");
+            md.update(name.getBytes());
+            tmpValue = md.digest();
+            sb = new StringBuilder();
+            for (int i = 0; i < TRANSLATION_LENGTH; i++) {
+                String hex = String.format("%02x", tmpValue[i]);
+                sb.append(hex);
+            }
+            System.out.println(tmpValue);
+            System.out.println(sb);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+        return sb.toString();
     }
 }
