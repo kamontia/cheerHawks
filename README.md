@@ -3,11 +3,9 @@
 ## Run Docker
 
 ```
-$ docker run --rm -itd -p 9000:9000 cheerhawks_web:latest sbt run
+$ docker compose up -d
 ```
 
-and you can connect the app using `curl localhost:9000`.
+And you can connect the app using `curl localhost:9000`.
 
-but when it build first, it takes many times...:(
-
-you can know build status using `docker logs <container id>`
+You can know build status using `docker logs <container id>`
