@@ -1,4 +1,5 @@
 # cheerHawks
+[![CircleCI](https://circleci.com/gh/kamontia/cheerHawks.svg?style=svg)](https://circleci.com/gh/kamontia/cheerHawks)
 
 ## Run Docker
 
