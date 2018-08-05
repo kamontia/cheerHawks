@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          command: docker-compose build
+      - run:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
+              docker tag kamontia/cheerhawks:latest kamontia/cheerhawks:`date "+%Y%m%d"`
+              docker push kamontia/cheerhawks
+            fi
