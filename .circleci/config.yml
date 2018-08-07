@@ -14,4 +14,6 @@ jobs:
               docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
               docker tag kamontia/cheerhawks:latest kamontia/cheerhawks:`date "+%Y%m%d"`
               docker push kamontia/cheerhawks
+              ssh -t -o StrictHostKeyChecking=no share.kamo.club "cd /usr/local/cheerHawks/ && sudo docker-compose pull"
+              ssh -t -o StrictHostKeyChecking=no share.kamo.club "cd /usr/local/cheerHawks/ && sudo docker-compose restart"
             fi
