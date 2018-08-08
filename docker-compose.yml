@@ -18,7 +18,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
     volumes:
       - ./db-data:/var/lib/mysql
-
+      - ./mysql:/etc/mysql/conf.d
 volumes:
   db-data:
     driver: local
