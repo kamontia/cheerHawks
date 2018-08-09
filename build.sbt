@@ -17,7 +17,9 @@ libraryDependencies ++= Seq(
   "com.github.twitter" % "bootstrap" % "2.0.2",
   "org.webjars" % "bootstrap" % "3.0.0",
   "org.webjars" %% "webjars-play" % "2.4.0",
-  "org.postgresql" % "postgresql" % "9.4-1201-jdbc41"
+  "org.postgresql" % "postgresql" % "9.4-1201-jdbc41",
+  jdbc,
+  "mysql" % "mysql-connector-java" % "5.1.26"
 )
 
 unmanagedResourceDirectories in Test <+= baseDirectory(_ / "target/web/public/test")
