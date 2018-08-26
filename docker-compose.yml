@@ -1,12 +1,13 @@
 version: '3'
 services:
   web:
-    build: .
-    image: kamontia/cheerhawks
+    image: hseeberger/scala-sbt:8u171-2.12.6-1.2.0
     tty: true
     ports:
       - "9000:9000"
     command: sbt run
+    volumes:
+      - ./:/root
     links:
       - db
   db:
