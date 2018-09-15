@@ -4,9 +4,11 @@
 ## Run Docker
 
 ```
-$ docker compose up -d
+$ docker-compose up -d
 ```
 
-And you can connect the app using `curl localhost:9000`.
+When you run for the first time, it takes a very long time for the server to listen.
 
-You can know build status using `docker logs <container id>`
+Please check the build status using `docker logs -f `docker logs -f cheerhawks_web_1`
+
+After that, you can access to http://localhost:9000 in your browser.
